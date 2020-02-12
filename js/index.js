@@ -31,22 +31,82 @@ allDivs.forEach(function (object){
     })
 })
 
+function changeTextRandom(object){
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    object.style.color = `#${randomColor}`;
+    console.log(randomColor);
+}
+
 // THIRD EVENT: Make Div's disappear when dragged and dropped
 
 allDivs.forEach(function (object){
     object.addEventListener("drag", function(){
-        setInterval(makeDisappear(object), 1000);
+        setInterval(makeDisappear(object), 10);
         makeAppear(object);
     })
 })
 
-// FOURTH EVENT: Make Div's appear when Header is clicked
+// FOURTH EVENT: Change image opacity when key down
+
+const allImages = document.querySelectorAll('img');
+allImages.forEach(function (object){
+    window.addEventListener('keydown', function(){
+        changeOpacity(object);
+        console.log(object);
+    })
+});
+
+function changeOpacity(object){
+    object.style.opacity = Math.random();
+}
+
+// FIFTH EVENT: Change Div borders to dotted when Key Down
+
+const footer = document.querySelector('footer');
+console.log(footer);
+
+footer.addEventListener('wheel', function(){
+    footer.style.border = "2px solid";
+})
+
+
+// SIXTH EVENT: Change background color of Nav Header on 'Copy'
 
 const mainNav = document.querySelector('.main-navigation');
 console.log(mainNav);
-mainNav.addEventListener("click", function(){
-    changeColor(mainNav);
+
+mainNav.addEventListener('copy', function(){
+    changeBackground(mainNav);
 });
+
+function changeBackground(object){
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    
+    object.style.backgroundColor = `#${randomColor}`;
+    console.log(randomColor);
+    console.log(object);
+}
+
+// SEVENTH EVENT: SELECT event, footer element
+
+const footerBar = document.querySelector(".footer");
+
+footerBar.addEventListener("select", 
+    (event) => { event.target.style.backgroundColor = 'blue'; 
+});
+
+// EIGHTH EVENT: Make Div's appear when Header is clicked
+
+'resize;'
+
+// NINTH EVENT: Make Div's appear when Header is clicked
+
+'scroll'
+
+// TENTH EVENT: Make Div's appear when Header is clicked
+
+'dblclick'
+'select'
 
 const container = document.querySelector('.container');
 console.log(container);
@@ -77,12 +137,6 @@ function changeColor(element){
 
 function changeText(element){
     element.style.color = "blue";
-}
-
-function changeTextRandom(object){
-    var randomColor = Math.floor(Math.random()*16777215).toString(16);
-    object.style.color = `#${randomColor}`;
-    console.log(randomColor);
 }
 
 function changeStyle(){ 
