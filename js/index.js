@@ -21,6 +21,12 @@ paragraphs.forEach(function (object){
     });
 });
 
+function changeTextRandom(object){
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    object.style.color = `#${randomColor}`;
+    console.log(randomColor);
+}
+
 // SECOND EVENT: Select all h1 tags, change text to random color on Scroll Event
 
 const allDivs = document.querySelectorAll('div');
@@ -65,23 +71,21 @@ function changeOpacity(object){
 const footer = document.querySelector('footer');
 console.log(footer);
 
-footer.addEventListener('wheel', function(){
+window.addEventListener('wheel', function(){
     footer.style.border = "2px solid";
 })
-
 
 // SIXTH EVENT: Change background color of Nav Header on 'Copy'
 
 const mainNav = document.querySelector('.main-navigation');
 console.log(mainNav);
 
-mainNav.addEventListener('copy', function(){
+window.addEventListener("copy", function(){
     changeBackground(mainNav);
 });
 
 function changeBackground(object){
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
-    
     object.style.backgroundColor = `#${randomColor}`;
     console.log(randomColor);
     console.log(object);
@@ -89,24 +93,44 @@ function changeBackground(object){
 
 // SEVENTH EVENT: SELECT event, footer element
 
-const footerBar = document.querySelector(".footer");
+const footerBar = document.querySelector('.footer');
 
-footerBar.addEventListener("select", 
-    (event) => { event.target.style.backgroundColor = 'blue'; 
+window.addEventListener("dblclick", function(){
+        changeBackground(footerBar);
+    });
+
+// EIGHTH EVENT: 
+
+paragraphs.forEach(function (object){
+    window.addEventListener("resize", function(){
+        changeFont(object);
+    });
 });
 
-// EIGHTH EVENT: Make Div's appear when Header is clicked
+function changeFont(object){
+    var fontType = ["Arial", "Verdana", "Helvetica", "Times New Roman", "Georgia"];
+    var font = fontType[Math.floor(Math.random()*5)];
 
-'resize;'
+    object.style.fontFamily = font;
+    console.log(object.style.fontFamily);
+}
 
 // NINTH EVENT: Make Div's appear when Header is clicked
 
-'scroll'
+const contentSection = document.querySelectorAll('.content-section');
+contentSection.forEach(function(object){
+    window.addEventListener("scroll", function(){
+        addBorder(object);
+    })
+})
+
+function addBorder(element){
+    element.style.border = "1px solid red";
+}
 
 // TENTH EVENT: Make Div's appear when Header is clicked
 
-'dblclick'
-'select'
+// 
 
 const container = document.querySelector('.container');
 console.log(container);
@@ -119,7 +143,6 @@ oneDiv.addEventListener('keydown', function(){
     changeColor(oneDiv);
 });
 console.log(oneDiv);
-
 
 // Function Declarations
 
