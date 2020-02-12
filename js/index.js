@@ -27,7 +27,7 @@ function changeTextRandom(object){
     console.log(randomColor);
 }
 
-// SECOND EVENT: Select all h1 tags, change text to random color on Scroll Event
+// SECOND EVENT: Mouseover EVENT, change text of all Divs randomly
 
 const allDivs = document.querySelectorAll('div');
 
@@ -66,13 +66,13 @@ function changeOpacity(object){
     object.style.opacity = Math.random();
 }
 
-// FIFTH EVENT: Change Div borders to dotted when Key Down
+// FIFTH EVENT: Cut EVENT, change Footer background color
 
 const footer = document.querySelector('footer');
 console.log(footer);
 
-window.addEventListener('wheel', function(){
-    footer.style.border = "2px solid";
+window.addEventListener('cut', function(){
+    footer.style.backgroundColor = "darkblue";
 })
 
 // SIXTH EVENT: Change background color of Nav Header on 'Copy'
@@ -91,7 +91,7 @@ function changeBackground(object){
     console.log(object);
 }
 
-// SEVENTH EVENT: SELECT event, footer element
+// SEVENTH EVENT: Double Click EVENT, changes Footer background
 
 const footerBar = document.querySelector('.footer');
 
@@ -99,7 +99,7 @@ window.addEventListener("dblclick", function(){
         changeBackground(footerBar);
     });
 
-// EIGHTH EVENT: 
+// EIGHTH EVENT: Resize EVENT, changes Font-Family of Paragraphs
 
 paragraphs.forEach(function (object){
     window.addEventListener("resize", function(){
@@ -115,7 +115,7 @@ function changeFont(object){
     console.log(object.style.fontFamily);
 }
 
-// NINTH EVENT: Make Div's appear when Header is clicked
+// NINTH EVENT: Scroll EVENT, Adds red border to 'Content-Section'
 
 const contentSection = document.querySelectorAll('.content-section');
 contentSection.forEach(function(object){
@@ -128,9 +128,26 @@ function addBorder(element){
     element.style.border = "1px solid red";
 }
 
-// TENTH EVENT: Make Div's appear when Header is clicked
+// TENTH EVENT: Double Click EVENT, switch Opacity of Images from 0 to 1
 
-// 
+allImages.forEach(function (object){
+    object.addEventListener('dblclick', function(){
+        vanish(object);
+        console.log(object);
+    })
+});
+
+function vanish(object){
+    var decider = Math.floor(Math.random()*2);
+    console.log(decider);
+    
+    if (decider > 0){
+        object.style.opacity = '1';
+    } else{ object.style.opacity = '0';
+        }
+}
+
+///////////////////////////////////////////////////////////////// 
 
 const container = document.querySelector('.container');
 console.log(container);
