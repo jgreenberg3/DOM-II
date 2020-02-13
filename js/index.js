@@ -78,10 +78,17 @@ window.addEventListener('cut', function(){
 // SIXTH EVENT: Change background color of Nav Header on 'Copy'
 
 const mainNav = document.querySelector('.main-navigation');
+
 console.log(mainNav);
 
 window.addEventListener("copy", function(){
     changeBackground(mainNav);
+});
+
+// Adding 'preventdefault' to the Navigation here
+
+mainNav.addEventListener("click", function(){
+    mainNav.preventdefault();
 });
 
 function changeBackground(object){
@@ -185,3 +192,6 @@ function changeStyle(){
     ctaText.style.color = `#${randomColor}`;
     console.log(randomColor);
 }
+
+// 
+
