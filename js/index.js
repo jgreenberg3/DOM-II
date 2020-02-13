@@ -87,9 +87,9 @@ window.addEventListener("copy", function(){
 
 // Adding 'preventdefault' to the Navigation here
 
-mainNav.addEventListener("click", function(){
-    mainNav.preventdefault();
-});
+// mainNav.addEventListener("click", function(event){
+//     event.preventdefault();
+// });
 
 function changeBackground(object){
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
@@ -155,6 +155,29 @@ function vanish(object){
 }
 
 ///////////////////////////////////////////////////////////////// 
+
+// Stop Propagation() AND PreventDefault() successfully implemented here
+
+const navLink = document.querySelectorAll('.nav-link');
+const nav = document.querySelector('.nav');
+
+navLink.forEach(function(object){
+
+    object.addEventListener('click', function(){
+        object.style.border = "1px solid black"
+    });
+
+    object.addEventListener('click', function(event){
+        event.stopPropagation();
+        event.preventDefault();
+    });
+})
+
+nav.addEventListener('click', function(){
+    nav.style.border = "1px solid blue";
+})
+
+////////////////////////////////////////////////////////
 
 const container = document.querySelector('.container');
 console.log(container);
